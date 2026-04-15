@@ -15,6 +15,8 @@ export function Hero() {
         alignItems: 'center',
       }}
     >
+      <h1 style={{ color: 'red' }}>TEST HERO CHANGE</h1>
+      
       <div
         style={{
           maxWidth: 1400,
