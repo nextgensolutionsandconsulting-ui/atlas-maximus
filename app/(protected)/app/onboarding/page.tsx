@@ -601,42 +601,42 @@ export default async function OnboardingPage() {
             </section>
 
             <section className="resource-grid">
-              <article className="resource-card">
-                <div className="resource-kicker">Installation support</div>
-                <h3>Need help preparing the Jira rollout</h3>
-                <p>
-                  Use this as the future home for install instructions, admin checklists, and
-                  rollout notes tailored to customer environments.
-                </p>
-                <Link className="atlas-btn atlas-btn-primary" href="/#contact">
-                  Contact support
-                </Link>
-              </article>
+  <article className="resource-card">
+    <div className="resource-kicker">Installation support</div>
+    <h3>Need help preparing the Jira rollout</h3>
+    <p>
+      Use the protected docs hub for install instructions, admin checklists, and
+      rollout notes tailored to customer environments.
+    </p>
+    <Link className="atlas-btn atlas-btn-primary" href="/app/docs">
+      Open docs hub
+    </Link>
+  </article>
 
-              <article className="resource-card">
-                <div className="resource-kicker">Documentation</div>
-                <h3>Centralize setup and usage guidance</h3>
-                <p>
-                  This card can later point to customer documentation, FAQs, and onboarding
-                  references for Atlas Maximus in Jira.
-                </p>
-                <Link className="atlas-btn atlas-btn-secondary" href="/app">
-                  Back to subscriber portal
-                </Link>
-              </article>
+  <article className="resource-card">
+    <div className="resource-kicker">Documentation</div>
+    <h3>Centralize setup and usage guidance</h3>
+    <p>
+      This card can now point customers to protected documentation, FAQs, and onboarding
+      references for Atlas Maximus in Jira.
+    </p>
+    <Link className="atlas-btn atlas-btn-secondary" href="/app/docs">
+      Open docs hub
+    </Link>
+  </article>
 
-              <article className="resource-card">
-                <div className="resource-kicker">Subscriber admin</div>
-                <h3>Keep account and install readiness together</h3>
-                <p>
-                  Use the protected portal for customer-facing account coordination while Jira
-                  remains the actual runtime environment for the product experience.
-                </p>
-                <Link className="atlas-btn atlas-btn-secondary" href="/pricing">
-                  View plan details
-                </Link>
-              </article>
-            </section>
+  <article className="resource-card">
+    <div className="resource-kicker">Subscriber admin</div>
+    <h3>Keep account and install readiness together</h3>
+    <p>
+      Use the protected portal for customer-facing account coordination while Jira
+      remains the actual runtime environment for the product experience.
+    </p>
+    <Link className="atlas-btn atlas-btn-secondary" href="/app/account">
+      Open account center
+    </Link>
+  </article>
+</section>
           </div>
         </main>
       </div>
