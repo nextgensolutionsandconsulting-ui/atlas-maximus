@@ -529,13 +529,13 @@ export default async function SubscriberPortalPage() {
                 </p>
 
                 <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                  <Link className="atlas-btn atlas-btn-primary" href="/#contact">
-                    Request onboarding help
-                  </Link>
-                  <Link className="atlas-btn atlas-btn-secondary" href="/pricing">
-                    View subscription details
-                  </Link>
-                </div>
+  <Link className="atlas-btn atlas-btn-primary" href="/app/onboarding">
+    Open onboarding hub
+  </Link>
+  <Link className="atlas-btn atlas-btn-secondary" href="/pricing">
+    View subscription details
+  </Link>
+</div>
 
                 <div className="atlas-proof">
                   <span className="atlas-pill">Access status: {access.status}</span>
@@ -607,11 +607,11 @@ export default async function SubscriberPortalPage() {
                   <li>Track product access and installation readiness</li>
                   <li>Guide admins through instance-level setup</li>
                 </ul>
-                <div className="atlas-card-actions">
-                  <Link className="atlas-btn atlas-btn-primary" href="/#contact">
-                    Get installation help
-                  </Link>
-                </div>
+              <div className="atlas-card-actions">
+  <Link className="atlas-btn atlas-btn-primary" href="/app/onboarding">
+    Open onboarding hub
+  </Link>
+</div>
               </article>
 
               <article className="atlas-card">
