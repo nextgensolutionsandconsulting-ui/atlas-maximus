@@ -418,6 +418,7 @@ export default async function AccountPage() {
                 <Link className="atlas-nav-link" href="/app">Portal</Link>
                 <Link className="atlas-nav-link" href="/app/onboarding">Onboarding</Link>
                 <Link className="atlas-nav-link" href="/app/account">Account</Link>
+                <Link className="atlas-nav-link" href="/app/docs">Docs</Link>
                 <Link className="atlas-nav-link" href="/#contact">Support</Link>
               </div>
 
