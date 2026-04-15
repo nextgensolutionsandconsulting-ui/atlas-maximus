@@ -3,7 +3,7 @@ import { UserButton } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 import { getCurrentUserAccess } from '@/lib/access';
 
-export default async function SubscriberHomePage() {
+export default async function SubscriberPortalPage() {
   const access = await getCurrentUserAccess();
 
   if (!access.hasAccess) {
@@ -309,14 +309,14 @@ export default async function SubscriberHomePage() {
           font-size:.95rem;
         }
 
-        .atlas-module-grid{
+        .atlas-card-grid{
           display:grid;
           grid-template-columns:repeat(3,minmax(0,1fr));
           gap:18px;
           margin-bottom:22px;
         }
 
-        .atlas-module{
+        .atlas-card{
           padding:24px;
           border-radius:24px;
           background:#fff;
@@ -327,7 +327,7 @@ export default async function SubscriberHomePage() {
           min-height:280px;
         }
 
-        .atlas-module-kicker{
+        .atlas-card-kicker{
           font-size:.76rem;
           letter-spacing:.14em;
           text-transform:uppercase;
@@ -336,7 +336,7 @@ export default async function SubscriberHomePage() {
           margin-bottom:10px;
         }
 
-        .atlas-module-title{
+        .atlas-card-title{
           font-size:1.3rem;
           line-height:1.12;
           font-weight:900;
@@ -344,12 +344,12 @@ export default async function SubscriberHomePage() {
           margin-bottom:10px;
         }
 
-        .atlas-module-copy{
+        .atlas-card-copy{
           color:#495671;
           margin-bottom:18px;
         }
 
-        .atlas-module-list{
+        .atlas-card-list{
           list-style:none;
           padding:0;
           margin:0 0 24px;
@@ -358,13 +358,13 @@ export default async function SubscriberHomePage() {
           flex:1;
         }
 
-        .atlas-module-list li{
+        .atlas-card-list li{
           position:relative;
           padding-left:18px;
           color:#495671;
         }
 
-        .atlas-module-list li::before{
+        .atlas-card-list li::before{
           content:"";
           position:absolute;
           left:0;
@@ -375,7 +375,7 @@ export default async function SubscriberHomePage() {
           background:#1f4a8c;
         }
 
-        .atlas-module-actions{
+        .atlas-card-actions{
           display:flex;
           gap:10px;
           flex-wrap:wrap;
@@ -454,7 +454,7 @@ export default async function SubscriberHomePage() {
         @media (max-width: 1100px){
           .atlas-hero,
           .atlas-stat-grid,
-          .atlas-module-grid,
+          .atlas-card-grid,
           .atlas-panel-grid{
             grid-template-columns:1fr;
           }
@@ -493,23 +493,15 @@ export default async function SubscriberHomePage() {
                 <div className="atlas-brand-mark">AM</div>
                 <div>
                   <div className="atlas-brand-name">Atlas Maximus</div>
-                  <div className="atlas-brand-sub">Subscriber workspace</div>
+                  <div className="atlas-brand-sub">Subscriber portal</div>
                 </div>
               </Link>
 
               <div className="atlas-nav-links">
-                <Link className="atlas-nav-link" href="/app">
-                  Dashboard
-                </Link>
-                <Link className="atlas-nav-link" href="/app/atlas/pi">
-                  PI Dashboard
-                </Link>
-                <Link className="atlas-nav-link" href="/app/atlas/flow">
-                  Flow Console
-                </Link>
-                <Link className="atlas-nav-link" href="/app/atlas/sprint">
-                  Sprint Console
-                </Link>
+                <Link className="atlas-nav-link" href="/app">Portal</Link>
+                <Link className="atlas-nav-link" href="/pricing">Pricing</Link>
+                <Link className="atlas-nav-link" href="/#contact">Support</Link>
+                <Link className="atlas-nav-link" href="/">Website</Link>
               </div>
 
               <div className="atlas-nav-actions">
@@ -528,27 +520,27 @@ export default async function SubscriberHomePage() {
               <div>
                 <div className="atlas-eyebrow">Atlas Maximus AI</div>
                 <h1 className="atlas-title">
-                  Executive visibility and AI intelligence for scaled Agile delivery
+                  Subscriber portal for Jira installation, onboarding, and account access
                 </h1>
                 <p className="atlas-copy">
-                  Welcome to your subscriber workspace. Launch the PI Operating Dashboard,
-                  Flow Intelligence Console, and Sprint Planning Console from one branded
-                  operating center built to match the Atlas Maximus experience.
+                  Welcome to your Atlas Maximus customer portal. Use this workspace to manage
+                  access, review onboarding steps, prepare Jira installation, and access
+                  documentation and support for your Atlassian Marketplace experience.
                 </p>
 
                 <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                  <Link className="atlas-btn atlas-btn-primary" href="/app/atlas/pi">
-                    Open PI Dashboard
+                  <Link className="atlas-btn atlas-btn-primary" href="/#contact">
+                    Request onboarding help
                   </Link>
-                  <Link className="atlas-btn atlas-btn-secondary" href="/app/atlas/flow">
-                    Open Flow Console
+                  <Link className="atlas-btn atlas-btn-secondary" href="/pricing">
+                    View subscription details
                   </Link>
                 </div>
 
                 <div className="atlas-proof">
                   <span className="atlas-pill">Access status: {access.status}</span>
-                  <span className="atlas-pill">3 operating consoles</span>
-                  <span className="atlas-pill">Subscriber workspace active</span>
+                  <span className="atlas-pill">Subscriber portal active</span>
+                  <span className="atlas-pill">Marketplace-ready workflow</span>
                 </div>
               </div>
 
@@ -568,18 +560,10 @@ export default async function SubscriberHomePage() {
 
             <section className="atlas-stat-grid">
               <div className="atlas-stat">
-                <div className="atlas-stat-label">Workspace</div>
+                <div className="atlas-stat-label">Portal</div>
                 <div className="atlas-stat-value">Live</div>
                 <div className="atlas-stat-copy">
-                  Your protected Atlas Maximus environment is active and ready.
-                </div>
-              </div>
-
-              <div className="atlas-stat">
-                <div className="atlas-stat-label">Modules</div>
-                <div className="atlas-stat-value">3</div>
-                <div className="atlas-stat-copy">
-                  PI, Flow, and Sprint workspaces are structured for fast access.
+                  Your protected Atlas Maximus subscriber portal is active.
                 </div>
               </div>
 
@@ -587,71 +571,87 @@ export default async function SubscriberHomePage() {
                 <div className="atlas-stat-label">Access Mode</div>
                 <div className="atlas-stat-value">{access.status}</div>
                 <div className="atlas-stat-copy">
-                  Current user access is being resolved through your access service.
+                  Current account access is resolved through your access service.
+                </div>
+              </div>
+
+              <div className="atlas-stat">
+                <div className="atlas-stat-label">Delivery Model</div>
+                <div className="atlas-stat-value">Jira</div>
+                <div className="atlas-stat-copy">
+                  Product capabilities are delivered into the customer Jira environment.
                 </div>
               </div>
 
               <div className="atlas-stat">
                 <div className="atlas-stat-label">Next Step</div>
-                <div className="atlas-stat-value">Build</div>
+                <div className="atlas-stat-value">Install</div>
                 <div className="atlas-stat-copy">
-                  Expand each console into a polished executive-grade product view.
+                  Prepare onboarding, setup, and Marketplace rollout guidance.
                 </div>
               </div>
             </section>
 
-            <section className="atlas-module-grid">
-              <article className="atlas-module">
-                <div className="atlas-module-kicker">PI Operating Dashboard</div>
-                <h2 className="atlas-module-title">Lead the PI with confidence, risk, drift, and execution signal</h2>
-                <p className="atlas-module-copy">
-                  Give leaders one operating view across confidence, progress, risk exposure,
-                  and overall PI movement.
+            <section className="atlas-card-grid">
+              <article className="atlas-card">
+                <div className="atlas-card-kicker">Marketplace access</div>
+                <h2 className="atlas-card-title">
+                  Prepare Atlas Maximus for installation into the customer Jira instance
+                </h2>
+                <p className="atlas-card-copy">
+                  Use this portal as the control center for Marketplace access, installation
+                  planning, and rollout readiness.
                 </p>
-                <ul className="atlas-module-list">
-                  <li>Executive visibility across the PI</li>
-                  <li>Risk and drift operating signal</li>
-                  <li>Portfolio-ready leadership framing</li>
+                <ul className="atlas-card-list">
+                  <li>Prepare for Atlassian Marketplace delivery</li>
+                  <li>Track product access and installation readiness</li>
+                  <li>Guide admins through instance-level setup</li>
                 </ul>
-                <div className="atlas-module-actions">
-                  <Link className="atlas-btn atlas-btn-primary" href="/app/atlas/pi">
-                    Launch PI Dashboard
+                <div className="atlas-card-actions">
+                  <Link className="atlas-btn atlas-btn-primary" href="/#contact">
+                    Get installation help
                   </Link>
                 </div>
               </article>
 
-              <article className="atlas-module">
-                <div className="atlas-module-kicker">Flow Intelligence Console</div>
-                <h2 className="atlas-module-title">Improve daily standups with blocker, stale work, and flow intelligence</h2>
-                <p className="atlas-module-copy">
-                  Surface work stalls, blocker patterns, and aging flow signals while teams can still act.
+              <article className="atlas-card">
+                <div className="atlas-card-kicker">Setup and onboarding</div>
+                <h2 className="atlas-card-title">
+                  Centralize onboarding, permissions, and workspace readiness
+                </h2>
+                <p className="atlas-card-copy">
+                  Organize the steps customers need before Atlas Maximus gadgets are enabled
+                  in Jira.
                 </p>
-                <ul className="atlas-module-list">
-                  <li>Spot stale work and blockers quickly</li>
-                  <li>Improve standup focus and coaching insight</li>
-                  <li>Drive better flow conversations daily</li>
+                <ul className="atlas-card-list">
+                  <li>Define admin and user onboarding steps</li>
+                  <li>Capture prerequisite Jira and access requirements</li>
+                  <li>Provide a clean guided rollout path</li>
                 </ul>
-                <div className="atlas-module-actions">
-                  <Link className="atlas-btn atlas-btn-primary" href="/app/atlas/flow">
-                    Launch Flow Console
+                <div className="atlas-card-actions">
+                  <Link className="atlas-btn atlas-btn-primary" href="/#contact">
+                    Start onboarding
                   </Link>
                 </div>
               </article>
 
-              <article className="atlas-module">
-                <div className="atlas-module-kicker">Sprint Planning Console</div>
-                <h2 className="atlas-module-title">Make stronger capacity and commitment decisions before the sprint begins</h2>
-                <p className="atlas-module-copy">
-                  Use sprint planning intelligence to improve balance, availability, and commitment quality.
+              <article className="atlas-card">
+                <div className="atlas-card-kicker">Subscriber admin</div>
+                <h2 className="atlas-card-title">
+                  Manage account access, support, and subscription coordination
+                </h2>
+                <p className="atlas-card-copy">
+                  Keep account ownership, support, and future billing or provisioning actions
+                  in one branded portal.
                 </p>
-                <ul className="atlas-module-list">
-                  <li>Capacity-aware planning decisions</li>
-                  <li>Team workload and commitment signal</li>
-                  <li>Sharper sprint readiness conversations</li>
+                <ul className="atlas-card-list">
+                  <li>Review subscription and account status</li>
+                  <li>Access support and contact options</li>
+                  <li>Prepare for future billing and provisioning workflows</li>
                 </ul>
-                <div className="atlas-module-actions">
-                  <Link className="atlas-btn atlas-btn-primary" href="/app/atlas/sprint">
-                    Launch Sprint Console
+                <div className="atlas-card-actions">
+                  <Link className="atlas-btn atlas-btn-primary" href="/pricing">
+                    Review account
                   </Link>
                 </div>
               </article>
@@ -659,57 +659,63 @@ export default async function SubscriberHomePage() {
 
             <section className="atlas-panel-grid">
               <div className="atlas-panel">
-                <h3>Recommended launch sequence</h3>
-                <p>Use the dashboard as the subscriber landing point, then move into the most relevant module.</p>
+                <h3>Recommended customer journey</h3>
+                <p>
+                  Use the portal as the bridge between public website conversion and Jira-based
+                  product activation.
+                </p>
                 <ul className="atlas-list">
                   <li>
                     <div>
-                      <strong>Start with PI visibility</strong>
-                      <span>Open the executive-level PI Dashboard first</span>
+                      <strong>Step 1: Confirm subscriber access</strong>
+                      <span>User signs in and lands in the protected portal</span>
                     </div>
-                    <span className="atlas-badge">Priority</span>
+                    <span className="atlas-badge">Access</span>
                   </li>
                   <li>
                     <div>
-                      <strong>Move into team flow</strong>
-                      <span>Inspect blockers, stale work, and coaching signals</span>
+                      <strong>Step 2: Prepare onboarding</strong>
+                      <span>Review setup, permissions, and support guidance</span>
                     </div>
-                    <span className="atlas-badge">Flow</span>
+                    <span className="atlas-badge">Setup</span>
                   </li>
                   <li>
                     <div>
-                      <strong>Finish in sprint readiness</strong>
-                      <span>Validate capacity and commitment before execution</span>
+                      <strong>Step 3: Install into Jira</strong>
+                      <span>Activate Atlas Maximus capabilities in the customer instance</span>
                     </div>
-                    <span className="atlas-badge">Planning</span>
+                    <span className="atlas-badge">Jira</span>
                   </li>
                 </ul>
               </div>
 
               <div className="atlas-panel">
-                <h3>Workspace notes</h3>
-                <p>This page is now your branded Atlas Maximus subscriber home and can be expanded next with live data.</p>
+                <h3>Portal notes</h3>
+                <p>
+                  This page is now positioned as a subscriber portal rather than an in-browser
+                  host for the Jira gadgets themselves.
+                </p>
                 <ul className="atlas-list">
                   <li>
                     <div>
                       <strong>Protected access</strong>
-                      <span>Users must authenticate before entering this workspace</span>
+                      <span>Users authenticate before entering the subscriber portal</span>
                     </div>
                     <span className="atlas-badge">Secure</span>
                   </li>
                   <li>
                     <div>
                       <strong>Homepage-aligned design</strong>
-                      <span>Shared visual language with the public marketing site</span>
+                      <span>Shared Atlas Maximus visual language across public and private views</span>
                     </div>
                     <span className="atlas-badge">Brand</span>
                   </li>
                   <li>
                     <div>
-                      <strong>Ready for module expansion</strong>
-                      <span>PI, Flow, and Sprint can now be designed to match</span>
+                      <strong>Marketplace-ready positioning</strong>
+                      <span>The portal now fits a Jira installation and customer admin model</span>
                     </div>
-                    <span className="atlas-badge">Next</span>
+                    <span className="atlas-badge">Ready</span>
                   </li>
                 </ul>
               </div>
