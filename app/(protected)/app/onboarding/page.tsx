@@ -439,9 +439,10 @@ export default async function OnboardingPage() {
               <div className="atlas-nav-links">
                 <Link className="atlas-nav-link" href="/app">Portal</Link>
                 <Link className="atlas-nav-link" href="/app/onboarding">Onboarding</Link>
-                <Link className="atlas-nav-link" href="/pricing">Pricing</Link>
+                <Link className="atlas-nav-link" href="/app/account">Account</Link>
+                <Link className="atlas-nav-link" href="/app/docs">Docs</Link>
                 <Link className="atlas-nav-link" href="/#contact">Support</Link>
-              </div>
+                </div>
 
               <div className="atlas-nav-actions">
                 <Link className="atlas-btn atlas-btn-secondary" href="/app">
