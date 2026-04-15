@@ -8,6 +8,11 @@ type AccessRecord = {
   currentPeriodEnd: string | null;
 };
 
+// ✅ ADMIN ACCESS (ONLY YOU)
+const ADMIN_EMAILS = [
+  'saiken2@liberty.edu',
+].map((email) => email.toLowerCase());
+
 function isSupabaseConfigured() {
   return Boolean(env.NEXT_PUBLIC_SUPABASE_URL && env.SUPABASE_SERVICE_ROLE_KEY);
 }
@@ -41,10 +46,28 @@ export async function getCurrentUserAccess(): Promise<AccessRecord> {
     return { hasAccess: false, status: 'signed_out', currentPeriodEnd: null };
   }
 
-  if (!isSupabaseConfigured()) {
-    return { hasAccess: true, status: 'dev_preview', currentPeriodEnd: null };
+  const user = await currentUser();
+  const email = user?.emailAddresses?.[0]?.emailAddress?.toLowerCase() ?? '';
+
+  // ✅ ADMIN OVERRIDE (YOU ALWAYS GET ACCESS)
+  if (ADMIN_EMAILS.includes(email)) {
+    return {
+      hasAccess: true,
+      status: 'admin',
+      currentPeriodEnd: null,
+    };
   }
 
+  // ✅ DEV MODE (no Supabase yet)
+  if (!isSupabaseConfigured()) {
+    return {
+      hasAccess: false, // lock everyone else out
+      status: 'dev_no_access',
+      currentPeriodEnd: null,
+    };
+  }
+
+  // ✅ REAL SUBSCRIPTION CHECK (future Stripe flow)
   const supabase = getSupabaseAdmin();
   const { data, error } = await supabase
     .from('subscriptions')
