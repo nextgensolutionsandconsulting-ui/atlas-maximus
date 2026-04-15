@@ -9,6 +9,11 @@ export default function SignInPage() {
       <SignIn
         path="/sign-in"
         forceRedirectUrl="/app"
+        appearance={{
+          elements: {
+            footerAction: { display: 'none' },
+          },
+        }}
       />
     </div>
   );
