@@ -503,6 +503,7 @@ export default async function SubscriberPortalPage() {
                 <Link className="atlas-nav-link" href="/#contact">Support</Link>
                 <Link className="atlas-nav-link" href="/app/onboarding">Onboarding</Link>
                 <Link className="atlas-nav-link" href="/app/account">Account</Link>
+                <Link className="atlas-nav-link" href="/app/docs">Docs</Link>
                 <Link className="atlas-nav-link" href="/">Website</Link>
               </div>
 
