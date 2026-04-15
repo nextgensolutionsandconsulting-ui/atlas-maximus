@@ -498,12 +498,13 @@ export default async function SubscriberPortalPage() {
               </Link>
 
               <div className="atlas-nav-links">
-              <Link className="atlas-nav-link" href="/app">Portal</Link>
-              <Link className="atlas-nav-link" href="/app/onboarding">Onboarding</Link>
-              <Link className="atlas-nav-link" href="/app/account">Account</Link>
-              <Link className="atlas-nav-link" href="/app/docs">Docs</Link>
-              <Link className="atlas-nav-link" href="/app/support">Support</Link>
-              <Link className="atlas-nav-link" href="/">Website</Link>
+                <Link className="atlas-nav-link" href="/app">Portal</Link>
+                <Link className="atlas-nav-link" href="/app/get-started">Get Started</Link>
+                <Link className="atlas-nav-link" href="/app/onboarding">Onboarding</Link>
+                <Link className="atlas-nav-link" href="/app/account">Account</Link>
+                <Link className="atlas-nav-link" href="/app/docs">Docs</Link>
+                <Link className="atlas-nav-link" href="/app/support">Support</Link>
+                <Link className="atlas-nav-link" href="/">Website</Link>
               </div>
 
               <div className="atlas-nav-actions">
