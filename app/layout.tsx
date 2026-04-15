@@ -7,7 +7,11 @@ export const metadata: Metadata = {
   description: 'Atlas Maximus unified marketing site and subscriber workspace.',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <ClerkProvider>
       <html lang="en">
