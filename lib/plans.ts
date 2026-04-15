@@ -1,6 +1,6 @@
 export const atlasPlan = {
   name: 'Atlas Maximus',
-  priceLabel: '$499/mo',
+  priceLabel: '$39/mo',
   cadence: 'Monthly',
   summary: 'Unified executive-grade delivery intelligence for agile operating models.',
   included: [
