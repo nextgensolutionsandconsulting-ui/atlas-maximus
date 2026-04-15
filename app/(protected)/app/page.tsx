@@ -502,6 +502,7 @@ export default async function SubscriberPortalPage() {
                 <Link className="atlas-nav-link" href="/pricing">Pricing</Link>
                 <Link className="atlas-nav-link" href="/#contact">Support</Link>
                 <Link className="atlas-nav-link" href="/app/onboarding">Onboarding</Link>
+                <Link className="atlas-nav-link" href="/app/account">Account</Link>
                 <Link className="atlas-nav-link" href="/">Website</Link>
               </div>
 
@@ -651,10 +652,10 @@ export default async function SubscriberPortalPage() {
                   <li>Prepare for future billing and provisioning workflows</li>
                 </ul>
                 <div className="atlas-card-actions">
-                  <Link className="atlas-btn atlas-btn-primary" href="/pricing">
-                    Review account
-                  </Link>
-                </div>
+                <Link className="atlas-btn atlas-btn-primary" href="/app/account">
+                  Open account center
+                </Link>
+              </div>
               </article>
             </section>
 
