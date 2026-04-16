@@ -1,13 +1,20 @@
 import Link from 'next/link';
 import { UserButton } from '@clerk/nextjs';
+import { currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
-import { getCurrentUserAccess } from '@/lib/access';
 
 export default async function SubscriberPortalPage() {
-  const access = await getCurrentUserAccess();
+  const user = await currentUser();
 
-  if (!access.hasAccess) {
-    redirect('/pricing');
+  if (!user) {
+    redirect('/sign-in');
+  }
+
+  const hasAccess = user.publicMetadata?.access === true;
+  const accessStatus = hasAccess ? 'active' : 'pending';
+
+  if (!hasAccess) {
+    redirect('/pending');
   }
 
   return (
@@ -531,17 +538,17 @@ export default async function SubscriberPortalPage() {
                   documentation and support for your Atlassian Marketplace experience.
                 </p>
 
-               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-               <Link className="atlas-btn atlas-btn-primary" href="/app/onboarding">
-                Open onboarding hub
-               </Link>
-               <Link className="atlas-btn atlas-btn-secondary" href="/pricing">
-                View subscription details
-               </Link>
-              </div>
+                <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+                  <Link className="atlas-btn atlas-btn-primary" href="/app/onboarding">
+                    Open onboarding hub
+                  </Link>
+                  <Link className="atlas-btn atlas-btn-secondary" href="/pricing">
+                    View subscription details
+                  </Link>
+                </div>
 
                 <div className="atlas-proof">
-                  <span className="atlas-pill">Access status: {access.status}</span>
+                  <span className="atlas-pill">Access status: {accessStatus}</span>
                   <span className="atlas-pill">Subscriber portal active</span>
                   <span className="atlas-pill">Marketplace-ready workflow</span>
                 </div>
@@ -572,9 +579,9 @@ export default async function SubscriberPortalPage() {
 
               <div className="atlas-stat">
                 <div className="atlas-stat-label">Access Mode</div>
-                <div className="atlas-stat-value">{access.status}</div>
+                <div className="atlas-stat-value">{accessStatus}</div>
                 <div className="atlas-stat-copy">
-                  Current account access is resolved through your access service.
+                  Current account access is resolved through Clerk user metadata.
                 </div>
               </div>
 
@@ -610,11 +617,11 @@ export default async function SubscriberPortalPage() {
                   <li>Track product access and installation readiness</li>
                   <li>Guide admins through instance-level setup</li>
                 </ul>
-             <div className="atlas-card-actions">
-             <Link className="atlas-btn atlas-btn-primary" href="/app/onboarding">
-                  Open onboarding hub
-              </Link>
-              </div>
+                <div className="atlas-card-actions">
+                  <Link className="atlas-btn atlas-btn-primary" href="/app/onboarding">
+                    Open onboarding hub
+                  </Link>
+                </div>
               </article>
 
               <article className="atlas-card">
@@ -653,10 +660,10 @@ export default async function SubscriberPortalPage() {
                   <li>Prepare for future billing and provisioning workflows</li>
                 </ul>
                 <div className="atlas-card-actions">
-                <Link className="atlas-btn atlas-btn-primary" href="/app/account">
-                  Open account center
-                </Link>
-              </div>
+                  <Link className="atlas-btn atlas-btn-primary" href="/app/account">
+                    Open account center
+                  </Link>
+                </div>
               </article>
             </section>
 
