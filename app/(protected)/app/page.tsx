@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { UserButton } from '@clerk/nextjs';
-import { currentUser } from '@clerk/nextjs/server';
-import { redirect } from 'next/navigation';
+import { currentUser } from '@clerk/nextjs/server'
+import { redirect } from 'next/navigation'
 
 export default async function SubscriberPortalPage() {
   const user = await currentUser();
@@ -10,13 +10,21 @@ export default async function SubscriberPortalPage() {
     redirect('/sign-in');
   }
 
-  const hasAccess = user.publicMetadata?.access === true;
-  const accessStatus = hasAccess ? 'active' : 'pending';
+  const email = user.emailAddresses[0]?.emailAddress;
+  const isAdmin = email === process.env.ADMIN_EMAIL;
+
+  const hasAccess =
+    isAdmin || user.publicMetadata?.access === true;
+
+  const accessStatus = isAdmin
+    ? 'admin'
+    : hasAccess
+    ? 'active'
+    : 'pending';
 
   if (!hasAccess) {
     redirect('/pending');
   }
-
   return (
     <div
       style={{
